@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CardGames.Solitaire
+using CardGames;
+
+namespace Solitaire
 {
     public class SolitaireDrawer
     {

@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
+using CardGames;
 using CardGames.States;
 
-namespace CardGames.Solitaire
+namespace Solitaire
 {
-    public class SolitaireStateSelectingNumCards : State
+    public class SolitaireStateSelectingStack : State
     {
         private SolitaireGame game;
         private ConsoleInput input;
@@ -14,7 +15,8 @@ namespace CardGames.Solitaire
         public override void Init(StateMachine machine)
         {
             game = (SolitaireGame)machine;
-            game.StatusMessage = "How many cards would you like to move?\nUse up/down arrows.";
+            game.SelectStack(-1);
+            game.StatusMessage = "Press a number to select a stack.";
             game.DrawGame();
             input = new ConsoleInput();
         }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CardGames.Solitaire
+namespace Solitaire
 {
     public class ConsoleInput
     {

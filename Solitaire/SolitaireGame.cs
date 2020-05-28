@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Resources;
 using System.Text;
 
+using CardGames;
 using CardGames.States;
 
-namespace CardGames.Solitaire
+namespace Solitaire
 {
     public class SolitaireGame : StateMachine
     {

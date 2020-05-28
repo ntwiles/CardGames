@@ -4,7 +4,7 @@ using System.Text;
 
 using CardGames.States;
 
-namespace CardGames.Solitaire
+namespace Solitaire
 {
     public class SolitaireStateSelectingDestinationStack : State
     {

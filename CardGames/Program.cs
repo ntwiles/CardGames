@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Text;
 
-namespace Solitaire
+namespace CardGames
 {
     class Program
     {
@@ -8,9 +9,6 @@ namespace Solitaire
         {
             Console.OutputEncoding = Encoding.UTF8;
             Console.SetWindowSize(Console.LargestWindowWidth, Console.LargestWindowHeight);
-            SolitaireGame solitaire = new SolitaireGame();
-
-            solitaire.Play();
         }
     }
 }
