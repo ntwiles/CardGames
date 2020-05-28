@@ -8,7 +8,7 @@ using CardGames.States;
 
 namespace Solitaire
 {
-    public class SolitaireGame : StateMachine
+    public class SolitaireGame : CardGame
     {
         CardStack deck;
         CardStack drawStack;

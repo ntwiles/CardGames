@@ -13,7 +13,7 @@ namespace CardGames
 
         public CardDrawer()
         {
-            highlightColor = ConsoleColor.Green;
+            highlightColor = ConsoleColor.Cyan;
             heartDiamondColor = ConsoleColor.Red;
             mainColor = ConsoleColor.White;
         }

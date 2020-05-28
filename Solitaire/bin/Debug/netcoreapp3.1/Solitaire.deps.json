@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "Solitaire/1.0.0": {
+        "dependencies": {
+          "CardGames": "1.0.0"
+        },
+        "runtime": {
+          "Solitaire.dll": {}
+        }
+      },
+      "CardGames/1.0.0": {
+        "runtime": {
+          "CardGames.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Solitaire/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CardGames/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

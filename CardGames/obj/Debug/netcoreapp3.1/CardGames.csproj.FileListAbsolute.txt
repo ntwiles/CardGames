@@ -11,3 +11,16 @@ C:\Users\Student\source\repos\Solitaire\Solitaire\obj\Debug\netcoreapp3.1\CardGa
 C:\Users\Student\source\repos\Solitaire\Solitaire\obj\Debug\netcoreapp3.1\CardGames.dll
 C:\Users\Student\source\repos\Solitaire\Solitaire\obj\Debug\netcoreapp3.1\CardGames.pdb
 C:\Users\Student\source\repos\Solitaire\Solitaire\obj\Debug\netcoreapp3.1\CardGames.genruntimeconfig.cache
+C:\Users\Student\source\repos\CardGames\CardGames\bin\Debug\netcoreapp3.1\CardGames.exe
+C:\Users\Student\source\repos\CardGames\CardGames\bin\Debug\netcoreapp3.1\CardGames.deps.json
+C:\Users\Student\source\repos\CardGames\CardGames\bin\Debug\netcoreapp3.1\CardGames.runtimeconfig.json
+C:\Users\Student\source\repos\CardGames\CardGames\bin\Debug\netcoreapp3.1\CardGames.runtimeconfig.dev.json
+C:\Users\Student\source\repos\CardGames\CardGames\bin\Debug\netcoreapp3.1\CardGames.dll
+C:\Users\Student\source\repos\CardGames\CardGames\bin\Debug\netcoreapp3.1\CardGames.pdb
+C:\Users\Student\source\repos\CardGames\CardGames\obj\Debug\netcoreapp3.1\CardGames.csprojAssemblyReference.cache
+C:\Users\Student\source\repos\CardGames\CardGames\obj\Debug\netcoreapp3.1\CardGames.csproj.CoreCompileInputs.cache
+C:\Users\Student\source\repos\CardGames\CardGames\obj\Debug\netcoreapp3.1\CardGames.AssemblyInfoInputs.cache
+C:\Users\Student\source\repos\CardGames\CardGames\obj\Debug\netcoreapp3.1\CardGames.AssemblyInfo.cs
+C:\Users\Student\source\repos\CardGames\CardGames\obj\Debug\netcoreapp3.1\CardGames.dll
+C:\Users\Student\source\repos\CardGames\CardGames\obj\Debug\netcoreapp3.1\CardGames.pdb
+C:\Users\Student\source\repos\CardGames\CardGames\obj\Debug\netcoreapp3.1\CardGames.genruntimeconfig.cache

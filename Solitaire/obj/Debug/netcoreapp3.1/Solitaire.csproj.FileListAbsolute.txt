@@ -1,0 +1,17 @@
+C:\Users\Student\source\repos\CardGames\Solitaire\bin\Debug\netcoreapp3.1\CardGames.exe
+C:\Users\Student\source\repos\CardGames\Solitaire\bin\Debug\netcoreapp3.1\Solitaire.exe
+C:\Users\Student\source\repos\CardGames\Solitaire\bin\Debug\netcoreapp3.1\Solitaire.deps.json
+C:\Users\Student\source\repos\CardGames\Solitaire\bin\Debug\netcoreapp3.1\Solitaire.runtimeconfig.json
+C:\Users\Student\source\repos\CardGames\Solitaire\bin\Debug\netcoreapp3.1\Solitaire.runtimeconfig.dev.json
+C:\Users\Student\source\repos\CardGames\Solitaire\bin\Debug\netcoreapp3.1\Solitaire.dll
+C:\Users\Student\source\repos\CardGames\Solitaire\bin\Debug\netcoreapp3.1\Solitaire.pdb
+C:\Users\Student\source\repos\CardGames\Solitaire\bin\Debug\netcoreapp3.1\CardGames.dll
+C:\Users\Student\source\repos\CardGames\Solitaire\bin\Debug\netcoreapp3.1\CardGames.pdb
+C:\Users\Student\source\repos\CardGames\Solitaire\obj\Debug\netcoreapp3.1\Solitaire.csprojAssemblyReference.cache
+C:\Users\Student\source\repos\CardGames\Solitaire\obj\Debug\netcoreapp3.1\Solitaire.csproj.CoreCompileInputs.cache
+C:\Users\Student\source\repos\CardGames\Solitaire\obj\Debug\netcoreapp3.1\Solitaire.AssemblyInfoInputs.cache
+C:\Users\Student\source\repos\CardGames\Solitaire\obj\Debug\netcoreapp3.1\Solitaire.AssemblyInfo.cs
+C:\Users\Student\source\repos\CardGames\Solitaire\obj\Debug\netcoreapp3.1\Solitaire.csproj.CopyComplete
+C:\Users\Student\source\repos\CardGames\Solitaire\obj\Debug\netcoreapp3.1\Solitaire.dll
+C:\Users\Student\source\repos\CardGames\Solitaire\obj\Debug\netcoreapp3.1\Solitaire.pdb
+C:\Users\Student\source\repos\CardGames\Solitaire\obj\Debug\netcoreapp3.1\Solitaire.genruntimeconfig.cache
