@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Resources;
-using System.Text;
 
 using CardGames;
 using CardGames.States;
@@ -15,27 +13,41 @@ namespace Solitaire
         SolitaireDrawer drawer;
 
         //private Card currentDrawnCard;
-        private List<CardStack> stacks;
+        private List<StackColumn> columns;
+
+        private int numCardsSelected;
 
         public int SelectedStackIndex { get; private set; }
-        public int NumCardsSelected { get; private set; }
-        public string StatusMessage { get; set; }
+
+        public int NumCardsSelected
+        {
+            get { return numCardsSelected; }
+            set
+            {
+                numCardsSelected = Math.Max(value, 1);
+            }
+        }
+        public List<string> StatusMessages { get; set; }
 
         private bool playing;
 
         public SolitaireGame()
         {
+            StatusMessages = new List<string>();
+
             deck = new DeckBuilder().BuildDeck(true, false);
             drawStack = new CardStack();
             drawer = new SolitaireDrawer();
 
-            stacks = new List<CardStack>();
+            columns = new List<StackColumn>();
 
             // Create 7 stacks of cards.
             for (int i = 0; i < 7; i++)
             {
                 CardStack stack = new CardStack();
-                stacks.Add(stack);
+                StackColumn column = new StackColumn();
+                column.FaceDownStack = stack;
+                columns.Add(column);
             }
 
             // Distribute the cards across the stacks.
@@ -43,18 +55,22 @@ namespace Solitaire
             {
                 for (int ii = i; ii < 7; ii++)
                 {
-                    CardStack stack = stacks[ii];
+                    CardStack stack = columns[ii].FaceDownStack;
                     Card drawnCard = deck.DrawCard();
                     stack.Add(drawnCard);
                 }
             }
 
-            // Flip top cards
+            // Transfer top cards to their own stacks.
             for (int i = 0; i < 7; i++)
             {
-                CardStack stack = stacks[i];
-                Card topCard = stack.cards[stack.cards.Count - 1];
+                StackColumn column = columns[i];
+                CardStack faceDownStack = column.FaceDownStack;
+                CardStack faceUpStack = new CardStack();
+                Card topCard = faceDownStack.DrawCard();
                 topCard.Flip();
+                faceUpStack.Add(topCard);
+                column.FaceUpStack = faceUpStack;
             }
 
             TransferCardToDrawStack();
@@ -81,7 +97,7 @@ namespace Solitaire
 
         public void DrawGame()
         {
-            drawer.DrawSolitaireGame(this, deck, drawStack, stacks, StatusMessage);
+            drawer.DrawSolitaireGame(this, deck, drawStack, columns, StatusMessages);
         }
 
         public void Quit()
@@ -97,7 +113,7 @@ namespace Solitaire
             if (SelectedStackIndex == -1) return null;
             if (SelectedStackIndex == 0) return drawStack;
 
-            CardStack selectedStack = stacks[SelectedStackIndex - 1];
+            CardStack selectedStack = columns[SelectedStackIndex - 1].FaceUpStack;
 
             return selectedStack;
         }
@@ -106,7 +122,7 @@ namespace Solitaire
         {
             Card movingCard, receivingCard;
             CardStack movingStack;
-            CardStack receivingStack = stacks[toStack - 1];
+            CardStack receivingStack = columns[toStack - 1].FaceUpStack;
 
             if (SelectedStackIndex == 0)
             {
@@ -114,7 +130,7 @@ namespace Solitaire
             }
             else
             {
-                movingStack = stacks[SelectedStackIndex - 1];
+                movingStack = columns[SelectedStackIndex - 1].FaceUpStack;
             }
 
             movingCard = movingStack[movingStack.Count - 1];
@@ -138,10 +154,16 @@ namespace Solitaire
             }
             else
             {
-                movingCard = stacks[SelectedStackIndex - 1].DrawCard();
+                movingCard = columns[SelectedStackIndex - 1].FaceUpStack.DrawCard();
             }
 
-            stacks[toStack - 1].Add(movingCard);
+            columns[toStack - 1].FaceUpStack.Add(movingCard);
         }
+    }
+
+    public struct StackColumn
+    {
+        public CardStack FaceDownStack;
+        public CardStack FaceUpStack;
     }
 }

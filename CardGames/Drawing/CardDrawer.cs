@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
 
-namespace CardGames
+namespace CardGames.Drawing
 {
     public class CardDrawer
     {
@@ -13,7 +13,7 @@ namespace CardGames
 
         public CardDrawer()
         {
-            highlightColor = ConsoleColor.Cyan;
+            highlightColor = ConsoleColor.Yellow;
             heartDiamondColor = ConsoleColor.Red;
             mainColor = ConsoleColor.White;
         }

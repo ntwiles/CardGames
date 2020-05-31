@@ -16,7 +16,8 @@ namespace Solitaire
         {
             game = (SolitaireGame)machine;
             game.SelectStack(-1);
-            game.StatusMessage = "Press a number to select a stack.";
+            game.StatusMessages.Clear();
+            game.StatusMessages.Add("Press a number to select a stack.");
             game.DrawGame();
             input = new ConsoleInput();
         }

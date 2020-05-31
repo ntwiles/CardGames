@@ -14,18 +14,38 @@ namespace Solitaire
         public override void Init(StateMachine machine)
         {
             game = (SolitaireGame)machine;
-            game.StatusMessage = "What would you like to do next?\n";
-            game.StatusMessage += "Press up/down arrows to decide how many cards to move.\n";
-            game.StatusMessage += "Press a 0-9 to select a destination.\n";
+            game.StatusMessages.Clear();
+            game.StatusMessages.Add("What would you like to do next?");
+            game.StatusMessages.Add("Press up/down arrows to decide how many cards to move.");
+            game.StatusMessages.Add("Press a 0-9 to select a destination.");
             game.DrawGame();
             input = new ConsoleInput();
         }
 
         public override void Update()
         {
-            int chosenStack = input.GetStackChoice();
-            game.MoveCards(chosenStack);
-            game.SetState(new SolitaireStateSelectingStack());
+            ConsoleKeyInfo keyInfo = Console.ReadKey();
+
+            char keyChar = keyInfo.KeyChar;
+
+            // up or down to select an amount of cards.
+            if (keyInfo.Key == ConsoleKey.DownArrow) 
+            {
+                game.NumCardsSelected--;
+            }
+            else if (keyInfo.Key == ConsoleKey.UpArrow)
+            {
+                game.NumCardsSelected++;
+            }
+
+            // 0 to 9 to select a stack.
+            else if (keyChar >= 48 && keyChar <= 57)
+            {
+                int chosenStack;
+                chosenStack = (int)keyChar - 48;
+                game.MoveCards(chosenStack);
+                game.SetState(new SolitaireStateSelectingStack());
+            }
         }
     }
 }
