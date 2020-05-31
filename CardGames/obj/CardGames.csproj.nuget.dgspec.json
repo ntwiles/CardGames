@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Student\\source\\repos\\CardGames\\CardGames\\CardGames.csproj": {}
+    "D:\\OneDrive\\Development\\C#\\CardGames\\CardGames\\CardGames.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Student\\source\\repos\\CardGames\\CardGames\\CardGames.csproj": {
+    "D:\\OneDrive\\Development\\C#\\CardGames\\CardGames\\CardGames.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Student\\source\\repos\\CardGames\\CardGames\\CardGames.csproj",
+        "projectUniqueName": "D:\\OneDrive\\Development\\C#\\CardGames\\CardGames\\CardGames.csproj",
         "projectName": "CardGames",
-        "projectPath": "C:\\Users\\Student\\source\\repos\\CardGames\\CardGames\\CardGames.csproj",
-        "packagesPath": "C:\\Users\\Student\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Student\\source\\repos\\CardGames\\CardGames\\obj\\",
+        "projectPath": "D:\\OneDrive\\Development\\C#\\CardGames\\CardGames\\CardGames.csproj",
+        "packagesPath": "C:\\Users\\ntwil\\.nuget\\packages\\",
+        "outputPath": "D:\\OneDrive\\Development\\C#\\CardGames\\CardGames\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Student\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ntwil\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

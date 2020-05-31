@@ -8,7 +8,6 @@ namespace CardGames
     {
         public int Value { get; private set; }
         public CardSuit Suit { get; private set; }
-        public bool IsFaceUp { get; private set; }
 
         public bool IsRed
         {
@@ -19,12 +18,6 @@ namespace CardGames
         {
             this.Value = value;
             this.Suit = suit;
-            this.IsFaceUp = false;
-        }
-
-        public void Flip()
-        {
-            IsFaceUp = !IsFaceUp;
         }
 
         public enum CardSuit

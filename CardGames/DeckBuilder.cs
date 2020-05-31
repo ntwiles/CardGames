@@ -7,9 +7,9 @@ namespace CardGames
 {
     public class DeckBuilder
     {
-        public CardStack BuildDeck(bool shuffle, bool buildFaceUp)
+        public CardStack BuildDeck(bool shuffle, bool buildFaceUp = false)
         {
-            CardStack deck = new CardStack();
+            CardStack deck = new CardStack(buildFaceUp);
 
             for (int iFace = 0; iFace < 4; iFace++)
             {
@@ -18,7 +18,6 @@ namespace CardGames
                 for (int iValue = 1; iValue <= 13; iValue++)
                 {
                     Card card = new Card(iValue, suit);
-                    if (buildFaceUp) card.Flip();
                     deck.Add(card);
                 }
             }
@@ -33,7 +32,7 @@ namespace CardGames
 
         public CardStack Shuffle(CardStack deck)
         {
-            CardStack shuffled = new CardStack();
+            CardStack shuffled = new CardStack(deck.IsFaceUp);
             int initialDeckCount = deck.Count;
 
             while (shuffled.Count < initialDeckCount)
