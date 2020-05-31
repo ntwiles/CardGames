@@ -38,6 +38,7 @@ namespace Solitaire
             writeMessages(messages);
         }
 
+        // TODO: Abstract each step into its own method.
         private void drawGame(SolitaireGame game, CardStack deck, CardStack drawStack, List<StackColumn> columns)
         {
             var cardDrawer = new CardDrawer();
@@ -98,8 +99,6 @@ namespace Solitaire
                 for (int ii = 0; ii < faceUpStack.Count; ii++)
                 {
                     Card card = faceUpStack[ii];
-
-                    if (!card.IsFaceUp) continue;
 
                     int invertedCardNum = faceUpStack.Count - ii;
                     bool cardHighlighted = game.NumCardsSelected >= invertedCardNum;

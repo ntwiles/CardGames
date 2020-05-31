@@ -6,7 +6,5 @@ using CardGames.States;
 
 namespace CardGames
 {
-    public class CardGame : StateMachine
-    {
-    }
+    public abstract class CardGame : StateMachine { }
 }

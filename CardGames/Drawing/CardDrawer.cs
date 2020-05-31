@@ -20,12 +20,12 @@ namespace CardGames.Drawing
 
         public void DrawCard(int posX, int posY, Card card = null)
         {
-            DrawCard(posX, posY, card, false);
+            DrawCard(posX, posY, card, false, false);
         }
 
-        public void DrawCard(int posX, int posY, Card card, bool highlight = false)
+        public void DrawCard(int posX, int posY, Card card, bool highlight, bool faceUp = true)
         {
-            if (card == null || !card.IsFaceUp)
+            if (card == null || !faceUp)
             {
                 DrawFaceDownCard(posX, posY);
             }
@@ -162,6 +162,7 @@ namespace CardGames.Drawing
             }
         }
 
+        // TODO: This breaks for value 10, returning '1' instead. Find a solution.
         public char GetCardValue(int value)
         {
             switch (value)

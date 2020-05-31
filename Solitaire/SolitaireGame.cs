@@ -12,39 +12,58 @@ namespace Solitaire
         CardStack drawStack;
         SolitaireDrawer drawer;
 
-        //private Card currentDrawnCard;
         private List<StackColumn> columns;
 
         private int numCardsSelected;
-
-        public int SelectedStackIndex { get; private set; }
+        private int selectedStackIndex;
 
         public int NumCardsSelected
         {
             get { return numCardsSelected; }
             set
             {
-                numCardsSelected = Math.Max(value, 1);
+                if (SelectedStackIndex == -1) return;
+
+                CardStack faceUpCards = columns[SelectedStackIndex - 1].FaceUpStack;
+
+                if (faceUpCards.Count > 0)
+                {
+                    int maxCardsSelectable = faceUpCards.Count;
+                    numCardsSelected = Math.Clamp(value, 1, maxCardsSelectable);
+                }
             }
         }
+
+        public int SelectedStackIndex
+        {
+            get { return selectedStackIndex; }
+            set
+            {
+                if (value < columns.Count + 1 && value >= -1)
+                    selectedStackIndex = value;
+            }
+        }
+
         public List<string> StatusMessages { get; set; }
 
         private bool playing;
 
+        // TODO: Abstract a lot of this out into a new SolitaireGameBuilder class. 
         public SolitaireGame()
         {
             StatusMessages = new List<string>();
 
-            deck = new DeckBuilder().BuildDeck(true, false);
-            drawStack = new CardStack();
+            deck = new DeckBuilder().BuildDeck(true);
+
+            drawStack = new CardStack(true);
             drawer = new SolitaireDrawer();
 
             columns = new List<StackColumn>();
 
-            // Create 7 stacks of cards.
+            // Create 7 stacks of face down cards.
             for (int i = 0; i < 7; i++)
             {
-                CardStack stack = new CardStack();
+                CardStack stack = new CardStack(false);
                 StackColumn column = new StackColumn();
                 column.FaceDownStack = stack;
                 columns.Add(column);
@@ -62,13 +81,12 @@ namespace Solitaire
             }
 
             // Transfer top cards to their own stacks.
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < columns.Count; i++)
             {
                 StackColumn column = columns[i];
                 CardStack faceDownStack = column.FaceDownStack;
-                CardStack faceUpStack = new CardStack();
+                CardStack faceUpStack = new CardStack(true);
                 Card topCard = faceDownStack.DrawCard();
-                topCard.Flip();
                 faceUpStack.Add(topCard);
                 column.FaceUpStack = faceUpStack;
             }
@@ -79,7 +97,6 @@ namespace Solitaire
         private void TransferCardToDrawStack()
         {
             Card drawnCard = deck.DrawCard();
-            drawnCard.Flip();
             drawStack.Add(drawnCard);
         }
 
@@ -105,17 +122,20 @@ namespace Solitaire
             playing = false;
         }
 
-        public CardStack SelectStack(int newStack)
+        public CardStack GetStack(int stackIndex)
         {
-            SelectedStackIndex = newStack;
-            NumCardsSelected = 1;
+            CardStack chosenStack = null;
 
-            if (SelectedStackIndex == -1) return null;
-            if (SelectedStackIndex == 0) return drawStack;
+            if (stackIndex == 0) chosenStack = drawStack;
+            else if (stackIndex > 0 && stackIndex <= columns.Count)
+            {
+                StackColumn chosenColumn = columns[stackIndex - 1];
 
-            CardStack selectedStack = columns[SelectedStackIndex - 1].FaceUpStack;
+                if (chosenColumn.FaceUpStack.Count > 0) chosenStack = chosenColumn.FaceUpStack;
+                else if (chosenColumn.FaceDownStack.Count > 0) chosenStack = chosenColumn.FaceDownStack;
+            }
 
-            return selectedStack;
+            return chosenStack;
         }
 
         private bool canMoveCards(int toStack)
@@ -142,6 +162,8 @@ namespace Solitaire
             return isOneValueLower && isAlternatingSuit;
         }
 
+        // TODO FlipCardUp does not do a check to see if it can be done, but relies on the state to check. 
+        // This action has a 'canMoveCards' check first though. Make this more consistent.
         public void MoveCards(int toStack)
         {
             if (!canMoveCards(toStack)) return;
@@ -159,11 +181,17 @@ namespace Solitaire
 
             columns[toStack - 1].FaceUpStack.Add(movingCard);
         }
-    }
 
-    public struct StackColumn
-    {
-        public CardStack FaceDownStack;
-        public CardStack FaceUpStack;
+        // Should only be called on one of the 7 columns and when FaceUpStack is empty but FaceDownStack has cards.
+        public void FlipCardUp(int stackIndex)
+        {
+            if (stackIndex < 1 || stackIndex > columns.Count) throw new IndexOutOfRangeException();
+
+            CardStack faceDownStack = columns[stackIndex - 1].FaceDownStack;
+            CardStack faceUpStack = columns[stackIndex - 1].FaceUpStack;
+
+            Card selectedCard = faceDownStack.DrawCard();
+            faceUpStack.Add(selectedCard);
+        }
     }
 }

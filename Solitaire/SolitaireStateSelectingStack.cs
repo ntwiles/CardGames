@@ -15,7 +15,7 @@ namespace Solitaire
         public override void Init(StateMachine machine)
         {
             game = (SolitaireGame)machine;
-            game.SelectStack(-1);
+            game.SelectedStackIndex = -1;
             game.StatusMessages.Clear();
             game.StatusMessages.Add("Press a number to select a stack.");
             game.DrawGame();
@@ -24,17 +24,20 @@ namespace Solitaire
 
         public override void Update()
         {
-            CardStack selectedStack = game.SelectStack(input.GetStackChoice());
-            Card selectedCard = selectedStack[selectedStack.Count - 1];
+            int chosenStackIndex = input.GetStackChoice();
+            CardStack chosenStack = game.GetStack(chosenStackIndex);
 
-            if (!selectedCard.IsFaceUp)
+            if (chosenStack == null) return;
+
+            if (chosenStack.IsFaceUp)
             {
-                selectedCard.Flip();
-                game.SetState(new SolitaireStateSelectingStack());
-            }
-            else
-            {
+                game.SelectedStackIndex = chosenStackIndex;
                 game.SetState(new SolitaireStateSelectingDestinationStack());
+            }
+            else 
+            {
+                game.FlipCardUp(chosenStackIndex);
+                game.SetState(new SolitaireStateSelectingStack());
             }
         }
     }

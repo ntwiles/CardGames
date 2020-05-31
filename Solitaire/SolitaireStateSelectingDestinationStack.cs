@@ -44,6 +44,7 @@ namespace Solitaire
                 int chosenStack;
                 chosenStack = (int)keyChar - 48;
                 game.MoveCards(chosenStack);
+                game.SelectedStackIndex = -1;
                 game.SetState(new SolitaireStateSelectingStack());
             }
         }

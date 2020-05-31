@@ -24,3 +24,16 @@ C:\Users\Student\source\repos\CardGames\CardGames\obj\Debug\netcoreapp3.1\CardGa
 C:\Users\Student\source\repos\CardGames\CardGames\obj\Debug\netcoreapp3.1\CardGames.dll
 C:\Users\Student\source\repos\CardGames\CardGames\obj\Debug\netcoreapp3.1\CardGames.pdb
 C:\Users\Student\source\repos\CardGames\CardGames\obj\Debug\netcoreapp3.1\CardGames.genruntimeconfig.cache
+D:\OneDrive\Development\C#\CardGames\CardGames\bin\Debug\netcoreapp3.1\CardGames.exe
+D:\OneDrive\Development\C#\CardGames\CardGames\bin\Debug\netcoreapp3.1\CardGames.deps.json
+D:\OneDrive\Development\C#\CardGames\CardGames\bin\Debug\netcoreapp3.1\CardGames.runtimeconfig.json
+D:\OneDrive\Development\C#\CardGames\CardGames\bin\Debug\netcoreapp3.1\CardGames.runtimeconfig.dev.json
+D:\OneDrive\Development\C#\CardGames\CardGames\bin\Debug\netcoreapp3.1\CardGames.dll
+D:\OneDrive\Development\C#\CardGames\CardGames\bin\Debug\netcoreapp3.1\CardGames.pdb
+D:\OneDrive\Development\C#\CardGames\CardGames\obj\Debug\netcoreapp3.1\CardGames.csprojAssemblyReference.cache
+D:\OneDrive\Development\C#\CardGames\CardGames\obj\Debug\netcoreapp3.1\CardGames.csproj.CoreCompileInputs.cache
+D:\OneDrive\Development\C#\CardGames\CardGames\obj\Debug\netcoreapp3.1\CardGames.AssemblyInfoInputs.cache
+D:\OneDrive\Development\C#\CardGames\CardGames\obj\Debug\netcoreapp3.1\CardGames.AssemblyInfo.cs
+D:\OneDrive\Development\C#\CardGames\CardGames\obj\Debug\netcoreapp3.1\CardGames.dll
+D:\OneDrive\Development\C#\CardGames\CardGames\obj\Debug\netcoreapp3.1\CardGames.pdb
+D:\OneDrive\Development\C#\CardGames\CardGames\obj\Debug\netcoreapp3.1\CardGames.genruntimeconfig.cache
