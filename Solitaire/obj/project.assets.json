@@ -27,23 +27,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ntwil\\.nuget\\packages\\": {},
+    "C:\\Users\\Student\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\OneDrive\\Development\\C#\\CardGames\\Solitaire\\Solitaire.csproj",
+      "projectUniqueName": "C:\\Users\\Student\\source\\repos\\CardGames\\Solitaire\\Solitaire.csproj",
       "projectName": "Solitaire",
-      "projectPath": "D:\\OneDrive\\Development\\C#\\CardGames\\Solitaire\\Solitaire.csproj",
-      "packagesPath": "C:\\Users\\ntwil\\.nuget\\packages\\",
-      "outputPath": "D:\\OneDrive\\Development\\C#\\CardGames\\Solitaire\\obj\\",
+      "projectPath": "C:\\Users\\Student\\source\\repos\\CardGames\\Solitaire\\Solitaire.csproj",
+      "packagesPath": "C:\\Users\\Student\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Student\\source\\repos\\CardGames\\Solitaire\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\ntwil\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Student\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -56,8 +56,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "D:\\OneDrive\\Development\\C#\\CardGames\\CardGames\\CardGames.csproj": {
-              "projectPath": "D:\\OneDrive\\Development\\C#\\CardGames\\CardGames\\CardGames.csproj"
+            "C:\\Users\\Student\\source\\repos\\CardGames\\CardGames\\CardGames.csproj": {
+              "projectPath": "C:\\Users\\Student\\source\\repos\\CardGames\\CardGames\\CardGames.csproj"
             }
           }
         }

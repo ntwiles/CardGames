@@ -24,13 +24,23 @@ namespace Solitaire
             {
                 if (SelectedStackIndex == -1) return;
 
-                CardStack faceUpCards = columns[SelectedStackIndex - 1].FaceUpStack;
+                int maxCardsSelectable = 0;
 
-                if (faceUpCards.Count > 0)
+                if (SelectedStackIndex == 0)
                 {
-                    int maxCardsSelectable = faceUpCards.Count;
-                    numCardsSelected = Math.Clamp(value, 1, maxCardsSelectable);
+                    maxCardsSelectable = 1;
                 }
+                else
+                {
+                    CardStack faceUpCards = columns[SelectedStackIndex - 1].FaceUpStack;
+
+                    if (faceUpCards.Count > 0)
+                    {
+                        maxCardsSelectable = faceUpCards.Count;
+                    }
+                }
+
+                numCardsSelected = Math.Clamp(value, 1, maxCardsSelectable);
             }
         }
 
@@ -138,48 +148,44 @@ namespace Solitaire
             return chosenStack;
         }
 
-        private bool canMoveCards(int toStack)
+        private bool canMoveCards(CardStack movingStack, CardStack destStack)
         {
-            Card movingCard, receivingCard;
-            CardStack movingStack;
-            CardStack receivingStack = columns[toStack - 1].FaceUpStack;
+            Card movingCompareCard, receivingCompareCard;
 
-            if (SelectedStackIndex == 0)
+            movingCompareCard = movingStack[movingStack.Count - 1];
+
+            if (destStack.Count > 0)
             {
-                movingStack = drawStack;
+                receivingCompareCard = destStack[destStack.Count - 1];
+                bool isAlternatingSuit = movingCompareCard.IsRed != receivingCompareCard.IsRed;
+                bool isOneValueLower = movingCompareCard.Value == receivingCompareCard.Value - 1;
+
+                return isOneValueLower && isAlternatingSuit;
             }
             else
             {
-                movingStack = columns[SelectedStackIndex - 1].FaceUpStack;
+                return true;
             }
-
-            movingCard = movingStack[movingStack.Count - 1];
-            receivingCard = receivingStack[receivingStack.Count - 1];
-
-            bool isAlternatingSuit = movingCard.IsRed != receivingCard.IsRed;
-            bool isOneValueLower = movingCard.Value == receivingCard.Value - 1;
-
-            return isOneValueLower && isAlternatingSuit;
         }
 
         // TODO FlipCardUp does not do a check to see if it can be done, but relies on the state to check. 
         // This action has a 'canMoveCards' check first though. Make this more consistent.
-        public void MoveCards(int toStack)
+        public void MoveCards(int destStackIndex)
         {
-            if (!canMoveCards(toStack)) return;
+            CardStack fromStack;
+            CardStack subStack;
+            CardStack destStack = columns[destStackIndex - 1].FaceUpStack;
 
-            Card movingCard;
+            if (SelectedStackIndex == 0) fromStack = drawStack;
+            else fromStack = columns[SelectedStackIndex - 1].FaceUpStack;
 
-            if (SelectedStackIndex == 0)
+            subStack = fromStack.GetTopNCards(numCardsSelected);
+
+            if (canMoveCards(subStack, destStack))
             {
-                movingCard = drawStack.DrawCard();
+                fromStack.RemoveRange(fromStack.Count - subStack.Count, subStack.Count);
+                destStack.AddStack(subStack);
             }
-            else
-            {
-                movingCard = columns[SelectedStackIndex - 1].FaceUpStack.DrawCard();
-            }
-
-            columns[toStack - 1].FaceUpStack.Add(movingCard);
         }
 
         // Should only be called on one of the 7 columns and when FaceUpStack is empty but FaceDownStack has cards.
@@ -192,6 +198,20 @@ namespace Solitaire
 
             Card selectedCard = faceDownStack.DrawCard();
             faceUpStack.Add(selectedCard);
+        }
+
+        public void DrawCard()
+        {
+            if (deck.Count > 0)
+            {
+                Card drawnCard = deck.DrawCard();
+                drawStack.Add(drawnCard);
+            }
+            else if (drawStack.Count > 0)
+            {
+                deck = drawStack;
+                drawStack = new CardStack(true);
+            }
         }
     }
 }

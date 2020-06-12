@@ -24,20 +24,31 @@ namespace Solitaire
 
         public override void Update()
         {
-            int chosenStackIndex = input.GetStackChoice();
-            CardStack chosenStack = game.GetStack(chosenStackIndex);
+            ConsoleKeyInfo keyInfo = Console.ReadKey();
+            char keyChar = keyInfo.KeyChar;
 
-            if (chosenStack == null) return;
-
-            if (chosenStack.IsFaceUp)
+            if (keyInfo.Key == ConsoleKey.Spacebar)
             {
-                game.SelectedStackIndex = chosenStackIndex;
-                game.SetState(new SolitaireStateSelectingDestinationStack());
+                game.DrawCard();
             }
-            else 
+
+            // 0 to 9 to select a stack.
+            if (keyChar >= 48 && keyChar <= 57)
             {
-                game.FlipCardUp(chosenStackIndex);
-                game.SetState(new SolitaireStateSelectingStack());
+                int chosenStackIndex = (int)keyChar - 48;
+                CardStack chosenStack = game.GetStack(chosenStackIndex);
+
+                if (chosenStack.IsFaceUp)
+                {
+                    game.SelectedStackIndex = chosenStackIndex;
+                    game.NumCardsSelected = 1;
+                    game.SetState(new SolitaireStateSelectingDestinationStack());
+                }
+                else
+                {
+                    game.FlipCardUp(chosenStackIndex);
+                    game.SetState(new SolitaireStateSelectingStack());
+                }
             }
         }
     }
